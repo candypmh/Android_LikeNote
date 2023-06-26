@@ -22,11 +22,9 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() { //빨간줄 Implement 누르면 @Override뜸
             @Override
             public void onClick(View v) { //컴포넌트
-                Intent intent = new Intent(getApplicationContext().???????); //액티비티 - 액티비티간 통신(어디로 이동하라고 알려 줌. 여기서는 Main - CharacterList)
+                Intent intent = new Intent(getApplicationContext(), Activity_ListFormat.class); //액티비티 - 액티비티간 통신(어디로 이동하라고 알려 줌. 여기서는 Main - Activity_ListFormat)
                 startActivity(intent);
             }
         }); //버튼이 클릭되면
-
-
     }
 }
