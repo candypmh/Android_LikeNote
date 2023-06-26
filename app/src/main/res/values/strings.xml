@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Like Note</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <!--자주 쓰는 string 따로 빼서 정리-->
+
+    <!--Detail Page-->
+    <string name="detailName">이름</string>
+    <string name="detailSex">성별</string>
+    <string name="detailImage">이미지</string>
+    <string name="detailAge">나이</string>
+    <string name="detailCm">키</string>
+    <string name="detailKg">몸무게</string>
+    <string name="detailInfo">상세정보</string>
+    <string name="detailTag">태그</string>
+
+</resources>
