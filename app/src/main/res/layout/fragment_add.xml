@@ -11,11 +11,11 @@
     android:padding="20dp"
     tools:context=".Fragment_Add">
 
-        <!-- TODO: Update blank fragment layout -->
         <!--스크롤 뷰-->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

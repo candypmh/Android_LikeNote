@@ -23,14 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activity_ListFormat"
             android:label="List Format Activity"
             android:exported="true">
         </activity>
-
-
 
     </application>
 
