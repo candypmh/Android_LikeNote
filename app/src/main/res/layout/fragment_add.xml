@@ -26,7 +26,6 @@
 
                 <!--이름-->
                 <TextView
-                    android:id="@+id/addName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="이름"
@@ -34,6 +33,7 @@
                     android:textStyle="bold"/>
 
                 <EditText
+                    android:id="@+id/addName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="이름을 입력해주세요"
@@ -41,7 +41,6 @@
 
                 <!--성별-->
                 <TextView
-                    android:id="@+id/addSex"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/detailSex"
@@ -50,21 +49,25 @@
                     android:layout_marginTop="10dp"
                     />
                 <RadioGroup
+                    android:id="@+id/addSex"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/addSex_male"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="남"/>
 
                     <RadioButton
+                        android:id="@+id/addSex_female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="여"/>
 
                     <RadioButton
+                        android:id="@+id/addSex_none"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="무"/>
@@ -72,7 +75,6 @@
 
                 <!--이미지-->
                 <TextView
-                    android:id="@+id/addImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/detailImage"
@@ -82,14 +84,20 @@
                     />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/addImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:src="@tools:sample/avatars" />
 
+                <Button
+                    android:id="@+id/addSelectImageBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="이미지 선택" />
+
                 <!--간단 프로필-->
                 <TextView
-                    android:id="@+id/addAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/detailAge"
@@ -98,6 +106,7 @@
                     android:layout_marginTop="10dp"
                     />
                 <EditText
+                    android:id="@+id/addAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="세"
@@ -105,7 +114,6 @@
                     />
 
                 <TextView
-                    android:id="@+id/addCm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/detailCm"
@@ -114,6 +122,7 @@
                     android:layout_marginTop="10dp"
                     />
                 <EditText
+                    android:id="@+id/addCm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="cm"
@@ -121,7 +130,6 @@
                     />
 
                 <TextView
-                    android:id="@+id/addKg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/detailKg"
@@ -131,6 +139,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/addKg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="kg"
@@ -139,7 +148,6 @@
 
                 <!--상세정보-->
                 <TextView
-                    android:id="@+id/addInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/detailInfo"
@@ -149,7 +157,7 @@
                     />
 
                 <EditText
-                    android:id="@+id/editTextTextMultiLine"
+                    android:id="@+id/addInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="start|top"
@@ -164,7 +172,6 @@
 
                 <!--태그-->
                 <TextView
-                    android:id="@+id/addTag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/detailTag"
@@ -174,11 +181,68 @@
                     />
 
                 <EditText
+                    android:id="@+id/addTag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="태그를 입력해주세요."
                     android:focusable="true"
                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="별점"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <RatingBar
+                    android:id="@+id/addRatingBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:padding="15dp"
+                    android:rating="0"
+                    android:stepSize="1"/>
+
+
+
+               <!--숨김처리-->
+                <TextView
+                    android:id="@+id/addDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:hint="오늘 날짜"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:id="@+id/addLikeChk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:text="false"
+                    android:textSize="17sp"/>
+
+
+                <!--버튼 LinearLayout-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/addCreateBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="생성" />
+                </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

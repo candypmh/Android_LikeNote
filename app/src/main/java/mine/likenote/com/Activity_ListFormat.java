@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -15,6 +16,7 @@ public class Activity_ListFormat extends AppCompatActivity {
 
     //Nav연동해서 ListActivity에 얹을 프래그먼트 구현
     FragmentManager fragmentManager;
+
     //FragmentTransaction fragmentTransaction;
 
 
@@ -24,6 +26,8 @@ public class Activity_ListFormat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_format); //XML 화면 연결(엑티비티)
+
+
 
         //프래그먼트 구현(액티비티 위에서 프래그먼트 관리)
         fragmentManager = getSupportFragmentManager(); //프래그먼트 관리. 프래그먼트를 추가, 제거, 교체 및 상호작용하는 데 사용
