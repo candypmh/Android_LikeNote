@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Detail">
+
+    <LinearLayout
+        android:id="@+id/detailLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/detailName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:text="밧해송"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/detailImg"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/detailTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="#태그 #태그"
+            />
+
+        <TextView
+            android:id="@+id/detailAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="3dp"
+            android:text="27세"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/detailCm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="174cm"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/detailKg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="57kg"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/detailInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="리드보컬 겸 리드댄서. 생일은 1월 17일"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/detailDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="2023년/07월/XX일"
+            android:textSize="17sp"/>
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:padding="15dp"
+            android:rating="0"
+            android:stepSize="1"/>
+
+
+        <!--버튼 LinearLayout-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+        <Button
+            android:id="@+id/detailEditBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수정" />
+
+        <Button
+            android:id="@+id/detailDeleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="삭제"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</FrameLayout>
