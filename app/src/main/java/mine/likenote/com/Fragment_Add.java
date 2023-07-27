@@ -24,6 +24,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,7 +38,8 @@ public class Fragment_Add extends Fragment {
 
     private Context context;
     private static final int SELECT_IMAGE_REQUEST_CODE = 1;
-    private String selectedImagePath="";
+    private String selectedImagePath;
+    private Uri uri;
 
     EditText charName_input;
     ImageView charImg_input;
@@ -45,9 +48,9 @@ public class Fragment_Add extends Fragment {
     EditText charKg_input;
     EditText charContent_input;
     EditText charTag_input;
-    EditText charCreateDate_input;
-    EditText charLikeChk_input;
-    EditText charStar_input;
+    TextView charCreateDate_input;
+    TextView charLikeChk_input;
+    RatingBar charStar_input;
     Button add_button;
     RadioGroup charSex_input;
 
@@ -95,19 +98,7 @@ public class Fragment_Add extends Fragment {
                     charSexValue = "무";
                 }
 
-                //charImg 부분(ImageView) imageBtn에 대한 클릭 리스너
-                /*
-                selectImgBtn.setOnClickListener(new View.OnClickListener(){
-                    @Override
-                    public void onClick(View view){
-                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                        intent.setType("image/*");
-                        startActivityForResult(intent, SELECT_IMAGE_REQUEST_CODE);
-                    }
-                });
-                */
-
-                //charImg 수정
+                //charImg 수정. 사용자가 이미지를 선택하면 launcher를 실행하여 이미지선택하는 앱 호출
                 charImg_input.setOnClickListener(v -> {
                     Intent intent = new Intent();
                     intent.setType("image/*");
@@ -117,8 +108,7 @@ public class Fragment_Add extends Fragment {
 
                 DatabaseHelper dbHelper = new DatabaseHelper(context);
                 dbHelper.addCharacter(charName_input.getText().toString().trim(),
-                                        charSexValue,
-                                        //Integer.valueOf(메소드명.getText().toString().trim())인데 int가 없음
+                                        charSexValue,//Integer.valueOf(메소드명.getText().toString().trim())인데 int가 없음
                                         selectedImagePath,
                                         charAge_input.getText().toString().trim(),
                                         charCm_input.getText().toString().trim(),
@@ -128,12 +118,7 @@ public class Fragment_Add extends Fragment {
                                         currentDate,
                              false,
                                         0
-                                        //charCreateDate_input.getText().toString().trim(),
-                                        //Integer.valueOf(charStar_input.getText().toString().trim())
-                                        //charLikeChk_input.getText().toString().trim()
                                         );
-
-
             }
         });
 
@@ -142,35 +127,21 @@ public class Fragment_Add extends Fragment {
 
     
     
-    //charImg 관련 코드
+    //charImg 관련 코드. 이미지 선택결과를 처리함. 사용자가 이미지를 선택한 후 선택이미지의 Uri정보를 얻어와 charImg_input.setImageURI(uri)를 통해 이미지 뷰에 표시하고, selectedImagePath를 얻어오는 역할을 함.
     ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if(result.getResultCode() == Activity.RESULT_OK){
                         Intent intent = result.getData();
-                        Uri uri = intent.getData();
+                        uri = intent.getData();
                         charImg_input.setImageURI(uri);
-                        String selectedImagePath = getRealPathFromURI(uri);
+                        selectedImagePath = getRealPathFromURI(uri);
                     }
                 }
             }
     );
 
-
-
-
-    /*
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == SELECT_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null){
-            Uri selectedImageUri = data.getData();
-            selectedImagePath = getRealPathFromURI(selectedImageUri);
-            charImg_input.setImageURI(selectedImageUri);
-        }
-    }
-*/
 
 
     //Image 절대 경로 구해주는 메서드...URI에서 실제 파일 경로를 얻음
@@ -190,10 +161,6 @@ public class Fragment_Add extends Fragment {
             return path;
         }
     }
-
-
-
-
 
 
 }

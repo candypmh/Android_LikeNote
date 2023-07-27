@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE_NAME="Character";
-    private static final String COLUMN_CHARINDEX="charIndex";
+    private static final String COLUMN_CHARINDEX = "charIndex";
     private static final String COLUMN_CHARNAME="charName";
     private static final String COLUMN_CHARSEX="charSex";
     private static final String COLUMN_CHARIMG="charImg";
@@ -53,7 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //테이블 없을 시 생성
         String sqlCreateTable = "CREATE TABLE IF NOT EXISTS "+ TABLE_NAME +
-                " (" + COLUMN_CHARINDEX + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " (" + COLUMN_CHARINDEX + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_CHARNAME + " TEXT NOT NULL, "+
                 COLUMN_CHARSEX + " TEXT, "+
                 COLUMN_CHARIMG + " BLOB, "+
