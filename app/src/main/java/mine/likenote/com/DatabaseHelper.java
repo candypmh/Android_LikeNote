@@ -2,13 +2,19 @@ package mine.likenote.com;
 
 import static java.sql.DriverManager.println;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     //전역변수
@@ -112,6 +118,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         println("onOpen 호출");
     }
 */
+
+    //DB에서 모든 Character가져오기
+    public List<CharacterDTO> getAllCharacters(){
+        List<CharacterDTO> characterDTOList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase(); //읽어와서 db에 넣기
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        if(cursor.moveToFirst()){
+            do {
+                @SuppressLint("Range") int charIndex = cursor.getInt(cursor.getColumnIndex(COLUMN_CHARINDEX));
+                @SuppressLint("Range") String charName = cursor.getString(cursor.getColumnIndex(COLUMN_CHARNAME));
+                @SuppressLint("Range") String charSex = cursor.getString(cursor.getColumnIndex(COLUMN_CHARSEX));
+                @SuppressLint("Range") int charImg = Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CHARIMG)));
+                @SuppressLint("Range") String charAge = cursor.getString(cursor.getColumnIndex(COLUMN_CHARAGE));
+                @SuppressLint("Range") String charCm = cursor.getString(cursor.getColumnIndex(COLUMN_CHARCM));
+                @SuppressLint("Range") String charKg = cursor.getString(cursor.getColumnIndex(COLUMN_CHARKG));
+                @SuppressLint("Range") String charContent = cursor.getString(cursor.getColumnIndex(COLUMN_CHARCONTENT));
+                @SuppressLint("Range") String charTag = cursor.getString(cursor.getColumnIndex(COLUMN_CHARTAG));
+                @SuppressLint("Range") String charCreateDate = cursor.getString(cursor.getColumnIndex(COLUMN_CHARCREATEDATE));
+                @SuppressLint("Range") String charLikeChk = cursor.getString(cursor.getColumnIndex(COLUMN_CHARLIKECHK));
+                @SuppressLint("Range") String charStar = cursor.getString(cursor.getColumnIndex(COLUMN_CHARSTAR));
+
+                CharacterDTO characterDTO = new CharacterDTO(charIndex, charName, charSex, charImg, charAge, charCm, charKg, charContent, charTag, charLikeChk, charCreateDate, charStar);
+
+
+
+                characterDTOList.add(characterDTO);
+            }while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        db.close();
+
+    return characterDTOList;
+    }
+
+
 
 
 
