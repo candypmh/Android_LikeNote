@@ -15,7 +15,9 @@ import java.util.List;
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.ViewHolder> {
     private ArrayList<CharacterDTO> characterDTOList;
 
+    //생성자 만들어놓고 비워놨었음
     public CharacterAdapter(List<CharacterDTO> characterList) {
+        this.characterDTOList = new ArrayList<>(characterList);
     }
 
     //생성자를 통해 CharacterList를 받아와서 items에 추가하는 방식으로 변경...
@@ -23,17 +25,20 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
     @NonNull
     @Override
     public CharacterAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list_format,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_detail,parent,false);
         return new ViewHolder(view);
     }
 
 
 
     // 데이터 바인딩 작업
+    // null 체크 2023-8-15
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position){
         CharacterDTO item = characterDTOList.get(position);
-        holder.bind(item);
+        if(item != null){
+            holder.bind(item);
+        }
     }
 
 
@@ -93,7 +98,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
             charNameVH.setText(item.getCharName());
             charSexVH.setText(item.getCharSex());
             charImgVH.setImageResource(item.getCharImg());
-            charAgeVH.setText(item.getCharSex());
+            charAgeVH.setText(item.getCharAge());
             charCmVH.setText(item.getCharCm());
             charKgVH.setText(item.getCharKg());
             charContentVH.setText(item.getCharContent());

@@ -25,7 +25,7 @@ public class CharacterDTO {
         this.charKg = charKg;
         this.charContent = charContent;
         this.charTag = charTag;
-        this.charLikeChk = charLikeChk;
+        this.charLikeChk = Boolean.parseBoolean(charLikeChk);
         this.charCreateDate = charCreateDate;
         this.charStar = charStar;
     }

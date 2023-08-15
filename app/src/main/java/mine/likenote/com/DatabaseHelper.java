@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_CHARINDEX = "charIndex";
     private static final String COLUMN_CHARNAME="charName";
     private static final String COLUMN_CHARSEX="charSex";
-    private static final String COLUMN_CHARIMG="charImg";
+    private static final String COLUMN_CHARIMG = "charImg";
     private static final String COLUMN_CHARAGE="charAge";
     private static final String COLUMN_CHARCM="charCm";
     private static final String COLUMN_CHARKG="charKg";
@@ -131,7 +131,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range") int charIndex = cursor.getInt(cursor.getColumnIndex(COLUMN_CHARINDEX));
                 @SuppressLint("Range") String charName = cursor.getString(cursor.getColumnIndex(COLUMN_CHARNAME));
                 @SuppressLint("Range") String charSex = cursor.getString(cursor.getColumnIndex(COLUMN_CHARSEX));
-                @SuppressLint("Range") int charImg = Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CHARIMG)));
+                @SuppressLint("Range") int charImg = cursor.getInt(cursor.getColumnIndex(COLUMN_CHARIMG));
                 @SuppressLint("Range") String charAge = cursor.getString(cursor.getColumnIndex(COLUMN_CHARAGE));
                 @SuppressLint("Range") String charCm = cursor.getString(cursor.getColumnIndex(COLUMN_CHARCM));
                 @SuppressLint("Range") String charKg = cursor.getString(cursor.getColumnIndex(COLUMN_CHARKG));
