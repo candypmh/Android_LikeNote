@@ -43,6 +43,9 @@ public class Fragment_Add extends Fragment {
 
     EditText charName_input;
     ImageView charImg_input;
+
+    //이미지 버튼
+    Button selectImgBtn;
     EditText charAge_input;
     EditText charCm_input;
     EditText charKg_input;
@@ -51,6 +54,8 @@ public class Fragment_Add extends Fragment {
     TextView charCreateDate_input;
     TextView charLikeChk_input;
     RatingBar charStar_input;
+
+    //생성버튼
     Button add_button;
     RadioGroup charSex_input;
 
@@ -68,7 +73,8 @@ public class Fragment_Add extends Fragment {
         charName_input = view.findViewById(R.id.addName);
         charSex_input = view.findViewById(R.id.addSex);
         charImg_input = view.findViewById(R.id.addImage);
-        Button selectImgBtn = view.findViewById(R.id.addSelectImageBtn);
+        //이미지 생성버튼
+        selectImgBtn = view.findViewById(R.id.addSelectImageBtn);
         charAge_input = view.findViewById(R.id.addAge);
         charCm_input = view.findViewById(R.id.addCm);
         charKg_input = view.findViewById(R.id.addKg);
@@ -81,7 +87,34 @@ public class Fragment_Add extends Fragment {
 
         //생성버튼
         add_button = view.findViewById(R.id.addCreateBtn);
-        add_button.setOnClickListener(new View.OnClickListener() {
+
+
+
+        selectImgBtn.setOnClickListener(new View.OnClickListener(){ //이미지 생성 버튼 클릭하면 할 일
+        @Override
+        public void onClick(View view){
+            //이미지 선택 인텐트 생성
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+
+           //이미지 선택 액티비티 실행
+            launcher.launch(intent);
+
+            /*
+            //charImg 수정. 사용자가 이미지를 선택하면 launcher를 실행하여 이미지선택하는 앱 호출 => 이미지 선택 버튼 왜만든..?
+            charImg_input.setOnClickListener(v -> {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                launcher.launch(intent);
+            });
+             */
+        }
+  });
+
+
+
+        add_button.setOnClickListener(new View.OnClickListener() { //생성 버튼 클릭하면 할 일
             @Override
             public void onClick(View view) {
 
@@ -98,21 +131,13 @@ public class Fragment_Add extends Fragment {
                     charSexValue = "무";
                 }
 
-                //charImg 수정. 사용자가 이미지를 선택하면 launcher를 실행하여 이미지선택하는 앱 호출
-                charImg_input.setOnClickListener(v -> {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    launcher.launch(intent);
-                });
-
                 DatabaseHelper dbHelper = new DatabaseHelper(context);
                 dbHelper.addCharacter(charName_input.getText().toString().trim(),
                                         charSexValue,//Integer.valueOf(메소드명.getText().toString().trim())인데 int가 없음
                                         selectedImagePath,
-                                        charAge_input.getText().toString().trim(),
-                                        charCm_input.getText().toString().trim(),
-                                        charKg_input.getText().toString().trim(),
+                                        charAge_input.getText().toString().trim()+"세",
+                                        charCm_input.getText().toString().trim()+ "cm",
+                                        charKg_input.getText().toString().trim()+"kg",
                                         charContent_input.getText().toString().trim(),
                                         charTag_input.getText().toString().trim(),
                                         currentDate,
@@ -126,7 +151,7 @@ public class Fragment_Add extends Fragment {
     }//onCreate
 
     
-    
+
     //charImg 관련 코드. 이미지 선택결과를 처리함. 사용자가 이미지를 선택한 후 선택이미지의 Uri정보를 얻어와 charImg_input.setImageURI(uri)를 통해 이미지 뷰에 표시하고, selectedImagePath를 얻어오는 역할을 함.
     ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
